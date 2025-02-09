@@ -4,7 +4,7 @@
 # Konstantine Shevlakov at <shevlakov@132lan.ru> 2022
 
 # release OpenWrt
-RELEASE=21.02.6
+RELEASE=24.10
 # Output directory
 OUTPUT_DIR="./"
 # Verbose log
@@ -24,7 +24,7 @@ SIGN=1
 # use selective packages in packages.lst
 # 0 - enable selective packages list
 # 1 - build all feed packages
-PKG_FEEDS=0
+PKG_FEEDS=1
 
 
 # Stuff
@@ -62,11 +62,10 @@ clean_dep(){
 
 # apt command
 _dep(){
-	sudo -E apt $ACT -y build-essential ccache ecj fastjar file g++ gawk \
-	gettext git java-propose-classpath libelf-dev libncurses5-dev \
-	libncursesw5-dev libssl-dev python python2.7-dev python3 unzip curl \
-	python-distutils-extra python3-setuptools python3-dev rsync \
-	swig time xsltproc zlib1g-dev wget
+	sudo -E apt $ACT -y build-essential clang flex bison g++ gawk \
+	gcc-multilib g++-multilib gettext git libncurses5-dev libssl-dev \
+	python3-setuptools rsync swig unzip zlib1g-dev file wget
+ 
 }
 
 # Run build scenario
