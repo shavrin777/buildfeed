@@ -33,16 +33,3 @@ jobs:
         run: |
           touch dep_installed
           ./build.sh -b
-      - name: Assemble repository to artifact
-        run: |
-          rm -rf ./artifact/
-          mkdir -p ./artifact/
-          cp -rp ./packages/ ./artifact/
-          if [ -d ./logs/ ]; then
-            cp -rp ./logs/ ./artifact/
-          fi
-      - name: Upload repository to artifact
-        uses: actions/upload-artifact@master
-        with:
-          name: modemfeed-openwrt-repo
-          path: ./artifact/
